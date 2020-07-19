@@ -1,0 +1,97 @@
+##############################################
+#
+# ------- Feedback wave equation project -----
+#
+#---------------------------------------------
+ 
+For each section, the feedback will contain:
+
+(1) What has been done?
+(2) What is missing?
+(3) What can be improved?
+
+Finally, I will try to point out 3 strengths, 3 improvements 
+and whether I think the exercise is passed or not.
+
+# -------------- Section 2: Mathematical problem, discretization, implementation
+#
+# ------------ What has been done?
+
+
+The PDE problem was formulated correctly, and the discretizations for the general scheme, and the scheme for the first step are stated. The formulas for the boundary points are not stated explicitly, but a comment has been added that they are obtained by setting i or j = 0.
+
+Regarding the implementation, the reader is referred to the file wave2D_u0_S.py which includes implementation of both a scalar and a vectorized version of the schemes in forms or functions "advance_scalar" and "advance
+
+
+# ------------- What is missing?
+In terms the modified scheme for the boundary points, they should probably be stated explicitly, and not only at x = 0 and y = 0, but also at the other ends. On the other hand, I do agree that, depending on the implementation, the schemes don't really change that much.
+
+# ------------- What can be improved?
+Some small formatting error (such as the delta x and delta y in the initital step of the discretization could be corrected. Maybe some more explanation of the steps between the initial formulation and the results would be nice for easier understanding.
+
+Regarding the implementation itself, it could probably be shortened a bit by building a function that solves the scalar scheme at each point instead of copying itself. But still, the code is well structured and good to read.
+
+
+#--------------- Section 3: Testing
+
+#-------------- What has been done?
+
+Of the mandatory tasks, 3.1 (constant solution test), 3.3.(plug test) and  3.4 (standing waves) have been implemented. The constant solution and plug test run without problems (exact from a little issue, see below) and can also be assessed as nosetests. The standing wave test runs, but does not yield the expected convergence rate of 2, so it may seem like there are still some bugs in the solver. 
+
+# ------------- What is missing?
+Exercise 3.6 (manufactured solution) has been started, but not finished. So far, only the calculation of the source term is implemented.
+
+
+------------ What can be improved
+I had a problem with the initial condition in the plug test, and change y.all to y.all(). Then it worked, since python was complaining about comparing a function to a value. y.all is the function, y.all() calls it and returns values. For the convergence rate, it could be helpful to check step by step the solver, and the results. 
+To track down errors, you could check out some things (helped me..it worked, after only 10 hours of work ;-) )
+--> How is the convergence rate considering only the first step?
+--> Does the convergence rate calculation work for a series of values with known convergence rate?
+--> print out errors at each step. If it's for examples the boundaries or corners, the errors start when the waves hit them
+
+Regarding the manufactured solution, it should be possible to use the standing wave solution as well, and just fit the source and V terms accordingly. Then you know that your solution of 3.4 and 3.6 should be the same.
+
+
+# --------------- Section 4 - Physical problem
+
+# ----------- What has been done?
+
+The physical problem of a tsunami wave is implemented, at least partly as far as I can see.
+The necessary parameters to run the models are implemented, and the three subsea hill shapes are set up as different cases that can be passed to the function. They are used to calculate the wave velocity (not sure about the formula used here...since the initial condition is used in the velocity definition.)
+
+# ----------- What is missing?
+The solver runs wihtout giving errors, but it's hard to follow the results since there is no numerical or graphical output that quantifies or visualizes the result. A simple surface plot using the matplotlib library could certainly help here.
+
+------------ What can be improved?
+Since the standing wave test and the manufactured solution tests are missing, it remains a bit unsure if the results can be trusted. Visualization would be desirable. The formula for calculating the wave velocity included the initial condition at the moment, which might need some reconsideration. The velocity should only depend on the size of the hill i.e. initial still water depth - hill height.
+
+
+------------- Overall assessment
+
+3 strengths:
+
+1) Very compact implementation as only one file, nice and tidy
+2) Helpful comments to understand what is going on in the solver
+3) usage of only one formula for the schemes instead of mathematically simlified schemes at the boundaries make a comparison and error hunting easier
+
+3 improvements:
+
+1) the tests should be completed first, before moving on to the tsunami exercise. In this way, you could make sure that the solver likely handles damping and variable wave velocities.
+
+2) include a visualization function for the more complex task. This could help to analyse the results and track down errors
+
+3) maybe you could move the tsunami exercise out and make an extra script, such that once you have the solver ready and verified, you don't touch that file anymore...
+
+
+---- Passed?
+
+I think the general concept of how to build a solver was understood, and the first two tests run without issues. I'm sure that the standing wave solution test is a minor issue to fix.
+
+Since the physical problem (tsunami) couldn't really be assessed, it is a bit hard to judge how much works. If you manage to get the convergence rates fixed, I think this should still be a pass.
+
+
+
+
+
+
+

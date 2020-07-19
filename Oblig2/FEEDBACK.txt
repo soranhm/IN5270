@@ -1,0 +1,6 @@
+Files are easy to locate, with name according to the exercise.
+Variable/function names are in accordance with mathematical description,
+the code is well commented, formatted and organized.
+The program answers every point in the exercise, with correct output. The output
+is nicely formatted.
+ 

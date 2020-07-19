@@ -1,0 +1,16 @@
+Dear Soran,
+
+I have taken a look at your first mandatory exercise, and you have passed.  Well done!
+
+Your report is very nice, and the program is nicely structured and very readable.  Good job!
+
+A couple of comments:
+ * In exercise 1a), I think you mean 'centered difference' rather than 'backward Euler'.
+ * It looks to me like there are a couple of minor typos.  You may want to have a final read through to eliminate as many of those as possible.
+ * In exercise b) and c), I would consider formatting some of the calculations a little differently, and perhaps allowing some more space instead of trying to get everything in line with the text.
+
+Hope these are helpful comments.
+
+
+Kind regards,
+James D. Trotter
